@@ -1,0 +1,88 @@
+{% extends '_base.html' %} {% block title %}Dashboard - Dama Game{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dama Game</title>
+  <link rel="stylesheet" href="{% static 'my/css/style.css' %}">
+</head>
+<body>
+
+<div class="game-container">
+  <div id="bet_info">
+    <p>Total Bet Amount: {{ bet_amount }} Birr</p>
+  </div>
+
+  <div id="turn">Turn: RED</div>
+
+  <div id="board" class="board"></div>
+
+  <!-- Winner Modal -->something
+  <div id="winnerModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="winnerText">Winner: RED</h2>
+      <button id="playAgainBtn">Play Again</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const roomName = "{{ room_name }}";
+  const userId = "{{ user.telegram_id }}";
+  const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+  const gameSocket = new WebSocket(`${wsScheme}://${window.location.host}/ws/game/${roomName}/`);
+
+  // Send move to server
+  function sendMove(fromX, fromY, toX, toY) {
+    gameSocket.send(JSON.stringify({
+      type: "move",
+      user_id: userId,
+      from: { x: fromX, y: fromY },
+      to: { x: toX, y: toY }
+    }));
+  }
+
+  // Listen for moves or game results from server
+  gameSocket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    if (data.type === "move") {
+      updateBoardFromMove(data);
+    }
+    if (data.type === "winner") {
+      showWinner(data.winner);
+    }
+  };
+
+  // Update board with opponent's move
+  function updateBoardFromMove(data) {
+    // data.from.x, data.from.y, data.to.x, data.to.y
+    // You need to update UI accordingly and switch turn.
+    // This function is called when opponent moves.
+    // Call move logic with a flag so it doesn't send back move again.
+
+    movePieceFromServer(data.from.x, data.from.y, data.to.x, data.to.y);
+  }
+
+  // Show winner modal
+  function showWinner(winner) {
+    document.getElementById("winnerText").innerText = `Winner: ${winner.toUpperCase()}`;
+    document.getElementById("winnerModal").classList.remove("hidden");
+    disableBoard();
+  }
+
+  // Close modal and reload page when Play Again clicked
+  document.getElementById("playAgainBtn").addEventListener("click", () => {
+    window.location.href = "/";
+  });
+</script>
+
+<script src="{% static 'my/js/script.js' %}"></script>
+
+</body>
+</html>
+
+{% endblock %}
+

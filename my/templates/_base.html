@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Dama Game{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a73e8",
+              secondary: "#9333ea",
+              background: "#0d1117",
+              foreground: "#ffffff",
+              muted: "#6b7280",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-foreground min-h-screen flex flex-col transition-colors duration-300"
+  >
+    <header class="bg-gray-900/80 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a
+          href="{% url 'dashboard' %}"
+          class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
+        >
+          Dama Game
+        </a>
+        <div class="flex items-center space-x-4">
+          <a
+            href="{% url 'profile' %}"
+            class="text-muted hover:text-primary transition-colors px-3 py-2 rounded-md"
+          >
+            Profile
+          </a>
+          <a
+            href="{% url 'dashboard' %}"
+            class="text-muted hover:text-primary transition-colors px-3 py-2 rounded-md"
+          >
+            Dashboard
+          </a>
+          <a
+            href="{% url 'about' %}"
+            class="text-muted hover:text-primary transition-colors px-3 py-2 rounded-md"
+          >
+            About
+          </a>
+          <button
+            id="theme-toggle"
+            class="p-2 rounded-full hover:bg-gray-700 transition-colors"
+            aria-label="Toggle theme"
+          >
+            <i class="fas fa-sun text-yellow-400 hidden dark:block"></i>
+            <i class="fas fa-moon text-gray-400 block dark:hidden"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+      {% block content %} {% endblock %}
+    </main>
+
+    <footer class="bg-gray-900/80 py-4 mt-auto">
+      <div class="container mx-auto px-4 text-center text-muted">
+        &copy; 2025 Dama Game. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      const toggleButton = document.getElementById("theme-toggle");
+      toggleButton.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          document.documentElement.classList.contains("dark") ? "dark" : "light"
+        );
+      });
+
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+{% extends '_base.html' %} {% block title %}Dashboard - Dama Game{% endblock %}
+{% block content %}
+<!-- Welcome Section -->
+<section class="mb-8">
+  <h1 class="text-3xl font-bold text-primary mb-2">
+    Welcome to Your Dashboard!
+  </h1>
+  <p class="text-muted">
+    Find a game, join a tournament, or check the leaderboard to become the best
+    Dama player!
+  </p>
+</section>
+
+<!-- Main Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <!-- Available Games List -->
+  <div class="md:col-span-2">
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Available Games</h2>
+      <!-- Filter Buttons -->
+      <div class="flex space-x-2 mb-4">
+        <button
+          class="px-4 py-2 bg-secondary text-white rounded-md hover:bg-secondary/80 transition-colors"
+        >
+          Low Stakes
+        </button>
+        <button
+          class="px-4 py-2 bg-gray-700 text-muted rounded-md hover:bg-gray-600 transition-colors"
+        >
+          High Stakes
+        </button>
+        <button
+          class="px-4 py-2 bg-gray-700 text-muted rounded-md hover:bg-gray-600 transition-colors"
+        >
+          Quick Match
+        </button>
+      </div>
+      <!-- Games List -->
+      <div class="space-y-4">
+        <!-- Dummy Game 1 -->
+        <div
+          class="flex justify-between items-center bg-gray-900/50 p-4 rounded-md hover:bg-gray-900 transition-colors"
+        >
+          <div>
+            <p class="text-lg font-medium">Player: Alice</p>
+            <p class="text-muted">Bet: 50 coins | Time: 5 min/move</p>
+          </div>
+          <a
+            href="https://www.klaus.com"
+            class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/80 transition-colors"
+            >Join</a
+          >
+        </div>
+        <!-- Dummy Game 2 -->
+        <div
+          class="flex justify-between items-center bg-gray-900/50 p-4 rounded-md hover:bg-gray-900 transition-colors"
+        >
+          <div>
+            <p class="text-lg font-medium">Player: Bob</p>
+            <p class="text-muted">Bet: 100 coins | Time: 3 min/move</p>
+          </div>
+          <a
+            href="https://www.instagrma.com"
+            class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/80 transition-colors"
+            >Join</a
+          >
+        </div>
+      </div>
+      <!-- Create Game Button -->
+      <a
+        href="www.google.com"
+        class="block mt-4 text-center px-4 py-2 bg-secondary text-white rounded-md hover:bg-secondary/80 transition-colors"
+      >
+        Create New Game
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar: Leaderboard, Tournaments, Notifications -->
+  <div class="space-y-6">
+    <!-- Leaderboard -->
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Leaderboard</h2>
+      <ul class="space-y-3">
+        <li class="flex justify-between items-center">
+          <span>1. Alice</span>
+          <span class="text-muted">Wins: 25</span>
+        </li>
+        <li class="flex justify-between items-center">
+          <span>2. Bob</span>
+          <span class="text-muted">Wins: 20</span>
+        </li>
+        <li class="flex justify-between items-center">
+          <span>3. Charlie</span>
+          <span class="text-muted">Wins: 15</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tournaments -->
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Tournaments</h2>
+      <div class="space-y-3">
+        <div>
+          <p class="font-medium">Weekly Championship</p>
+          <p class="text-muted">Starts: May 30, 2025</p>
+          <a href="www.google.com" class="text-primary hover:underline"
+            >Join Now</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Notifications</h2>
+      <ul class="space-y-3">
+        <li class="text-muted">New game available from Alice!</li>
+        <li class="text-muted">Bob challenged you to a match!</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dama Game - Dashboard</title>
+    <link rel="stylesheet" href="{% static 'my/css/index.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'favicon.ico' %}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Welcome to Dama Game</h1>
+      </header>
+
+      <div class="user-info">
+        <p>
+          <strong>Username:</strong>
+          <span id="username">{{ user.name|default:"Guest" }}</span>
+        </p>
+        <p>
+          <strong>Balance:</strong>
+          <span id="balance">{{ user.balance|default:"0" }}</span> Birr
+        </p>
+      </div>
+
+      <div class="bet-selection">
+        <label for="betAmount">Choose your bet (in Birr):</label>
+        <select id="betAmount" name="betAmount">
+          <option value="10">10 Birr</option>
+          <option value="20">20 Birr</option>
+          <option value="50">50 Birr</option>
+          <option value="100">100 Birr</option>
+        </select>
+        <button id="play-game-btn">Play Game</button>
+        <p id="waitingStatus" style="display: none; color: green">
+          Waiting for another player...
+        </p>
+      </div>
+    </div>
+
+    <input type="hidden" id="csrfToken" value="{{ csrf_token }}" />
+    <input type="hidden" id="telegram-id" value="{{ user.telegram_id }}" />
+
+    <script src="{% static 'my/js/js.js' %}"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </body>
+</html> -->

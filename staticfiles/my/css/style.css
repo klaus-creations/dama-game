@@ -1,0 +1,214 @@
+/* General page styling */
+body {
+  background: linear-gradient(to bottom, #6b8e23, #556b2f);
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Turn display */
+#turn {
+  font-size: 20px;
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Board styling */
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  margin: 30px auto;
+  border: 4px solid black;
+  background-color: #000;
+  width: 480px;
+  height: 480px;
+  box-shadow: 0 0 30px #222;
+}
+
+/* Square styles */
+.square {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.light {
+  background-color: #000;
+}
+
+.dark {
+  background-color: white;
+}
+
+/* Piece styles */
+.piece {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: green;
+}
+
+.piece.king {
+  background-color: gold;
+  border: 3px solid #000;
+  color: black;
+}
+
+/* Highlight for available moves */
+.square.highlight {
+  background-color: rgb(1, 9, 131);
+  opacity: 0.6;
+}
+
+/* Winner Modal */
+#winnerModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#winnerModal.show {
+  display: flex;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+  text-align: center;
+}
+
+.modal-content h2 {
+  color: #222;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal-content button:hover {
+  background: #555;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Animations */
+@keyframes pieceEntry {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pieceCapture {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseTurn {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Apply to pieces */
+.piece {
+  animation: pieceEntry 0.3s ease;
+}
+
+/* Turn indicator animation */
+#turn {
+  animation: pulseTurn 1.5s infinite;
+  transition: background-color 0.3s;
+}
+
+/* Fade out class for capture */
+.captured {
+  animation: pieceCapture 0.4s ease forwards;
+}
+
+/* Optional: subtle arena animation */
+body {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+#bet_info{
+  background-color: #f4f4f4;
+  padding: 10px;
+  border: 2px solid  #444;
+  width: 250px;
+  margin: 10px auto;
+  text-align: center;
+  font-weight:bold ;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,2);
+}

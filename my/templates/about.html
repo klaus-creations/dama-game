@@ -1,0 +1,61 @@
+{% extends '_base.html' %}
+{% block title %}About - Dama Game{% endblock %}
+{% block content %}
+<!-- About Section -->
+<section class="mb-8">
+  <h1 class="text-3xl font-bold text-primary mb-2">About Dama Game</h1>
+  <p class="text-muted">
+    Welcome to Dama Game, your ultimate destination for playing the classic game of checkers (draughts) online!
+    Compete with players worldwide, join exciting tournaments, and climb the leaderboard to become a Dama master.
+  </p>
+</section>
+
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <!-- Main About Content -->
+  <div class="md:col-span-2">
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Our Mission</h2>
+      <p class="text-muted mb-4">
+        Dama Game is designed to bring the timeless strategy game of checkers to a modern online platform.
+        Our mission is to create a fun, competitive, and inclusive environment where players of all skill levels
+        can enjoy strategic gameplay, connect with others, and improve their skills.
+      </p>
+      <h2 class="text-2xl font-semibold text-primary mb-4">Features</h2>
+      <ul class="space-y-3 text-muted">
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+          </svg>
+          Play quick matches or high-stakes games
+        </li>
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+          </svg>
+          Join weekly and monthly tournaments
+        </li>
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+          </svg>
+          Track your progress with leaderboards
+        </li>
+      </ul>
+      <h2 class="text-2xl font-semibold text-primary mt-6 mb-4">Get Started</h2>
+          </div>
+  </div>
+
+  <!-- Sidebar: Quick Links -->
+  <div class="space-y-6">
+    <!-- Game Rules -->
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Game Rules</h2>
+      <p class="text-muted mb-4">
+        Learn the rules of checkers and start playing like a pro!
+      </p>
+      <a href="/rules" class="text-primary hover:underline">View Rules</a>
+    </div>
+      </div>
+</div>
+{% endblock %}

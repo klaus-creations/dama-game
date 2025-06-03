@@ -1,0 +1,85 @@
+{% extends '_base.html' %}
+{% block title %}Profile - Dama Game{% endblock %}
+{% block content %}
+<!-- Profile Header -->
+<section class="mb-8">
+  <h1 class="text-3xl font-bold text-primary mb-2">Your Profile</h1>
+  <p class="text-muted">
+    Manage your account, view your stats, and showcase your achievements!
+  </p>
+</section>
+
+<!-- Profile Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <!-- Profile Details -->
+  <div class="md:col-span-2">
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Profile Details</h2>
+      <div class="space-y-4">
+        <div>
+          <p class="text-lg font-medium">Username: Player123</p>
+          <p class="text-muted">Email: player123@example.com</p>
+          <p class="text-muted">Joined: January 15, 2025</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-medium text-primary">Bio</h3>
+          <p class="text-muted">
+            I'm a passionate checkers player aiming to top the leaderboard! Always up for a challenge.
+          </p>
+        </div>
+        <a
+          href="/edit-profile"
+          class="inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/80 transition-colors"
+        >
+          Edit Profile
+        </a>
+      </div>
+      <h2 class="text-2xl font-semibold text-primary mt-6 mb-4">Game Stats</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-gray-900/50 p-4 rounded-md text-center">
+          <p class="text-lg font-medium">Wins</p>
+          <p class="text-2xl text-primary">18</p>
+        </div>
+        <div class="bg-gray-900/50 p-4 rounded-md text-center">
+          <p class="text-lg font-medium">Losses</p>
+          <p class="text-2xl text-primary">5</p>
+        </div>
+        <div class="bg-gray-900/50 p-4 rounded-md text-center">
+          <p class="text-lg font-medium">Rank</p>
+          <p class="text-2xl text-primary">#7</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar: Achievements & Recent Matches -->
+  <div class="space-y-6">
+    <!-- Achievements -->
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Achievements</h2>
+      <ul class="space-y-3">
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6z"/>
+          </svg>
+          First Win
+        </li>
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6z"/>
+          </svg>
+          Tournament Participant
+        </li>
+      </ul>
+    </div>
+    <!-- Recent Matches -->
+    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-primary mb-4">Recent Matches</h2>
+      <ul class="space-y-3">
+        <li class="text-muted">Won vs. Alice - May 28, 2025</li>
+        <li class="text-muted">Lost vs. Bob - May 27, 2025</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
